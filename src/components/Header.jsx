@@ -1,6 +1,8 @@
 import { keyframes, styled }  from "styled-components";
 import { NavLink } from "react-router-dom";
 
+
+
 const Header = ()=>{
     return(
         <HeaderContainer>
@@ -10,15 +12,18 @@ const Header = ()=>{
           <Title>portfolio</Title>
         </Titlecontainer>
         </Icon>
+        <MenuContainer>
+
         <NavLink to="/" style={({isActive})=>{return {color: isActive ? "#9ea832" : "white"}}}> 
-        <Menubtn>home</Menubtn> 
+        <Menubtn>Home</Menubtn> 
         </NavLink> 
         <NavLink to="/projects" style={({isActive})=>{return {color: isActive ? "#9ea832" : "white"}}}> 
-        <Menubtn> projects</Menubtn>
+        <Menubtn> Projects</Menubtn>
         </NavLink> 
         <NavLink to="/cv" style={({isActive})=>{return {color: isActive ? "#9ea832" : "white"}}}> 
-        <Menubtn> cv</Menubtn>
+        <Menubtn> CV</Menubtn>
         </NavLink> 
+        </MenuContainer>
 
       </HeaderContainer>
     )
@@ -29,18 +34,35 @@ const Header = ()=>{
 
 export default Header
 
-
-const Menubtn = styled.p`
+const MenuContainer = styled.div`
+display: flex;
+gap: 3rem;
 position: relative;
 top: 3rem;
 left: 7rem;
+@media (max-width: 710px) {
+  left: 0;
+  top: 1.4rem;
+  }
+  @media (max-width: 500px){
+    left: 0;
+    top: 1.4rem;
+    gap: 2rem;
+  }
+`
+
+const Menubtn = styled.p`
 width: 5rem;
 height: 1rem;
 padding: .5rem 0;
 text-align: center;
-background-color: black;
+background-color: #000000;
 border-radius: 1rem;
 box-shadow: 0 0 10px #2c4761;
+&:hover{
+background-color: #4a4949;
+box-shadow: 0 0 16px #4a4949;
+
 `
 
 const TitleColor = keyframes`
@@ -64,11 +86,15 @@ const IconShape = keyframes`
 
 const HeaderContainer =  styled.div`
 width: 100vw;
-height: 8rem;
+height: 9rem;
 background-color: #ebe39d;
-box-shadow: 0 1px #454330;
+box-shadow: 0 3px 6px #454330;
 display: flex;
-gap: 3rem;
+@media (max-width: 710px) {
+  flex-direction: column;
+  height:10rem;
+  align-items: center;
+  }
 `
 
 const Titlecontainer = styled.div`
@@ -109,4 +135,7 @@ left: .75rem;
 animation-name: ${IconShape};
 animation-duration: 12s;
 animation-iteration-count: infinite;
+@media (max-width: 710px) {
+  left: 0;
+  }
 `
